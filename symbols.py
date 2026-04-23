@@ -20,3 +20,47 @@ SYMBOLS = [
     "DGKC",
     "NESTLE",
 ]
+
+COMPANIES = {
+    "SILK":   {"name": "Silk Bank Limited",             "aliases": ["SILKBANK"],               "industry": "Banking",          "keywords": ["bank", "banking", "microfinance", "deposits"]},
+    "OGDC":   {"name": "Oil & Gas Development Company", "aliases": ["OGDCL"],                  "industry": "Oil & Gas",        "keywords": ["oil", "gas", "exploration", "petroleum", "upstream", "well"]},
+    "PPL":    {"name": "Pakistan Petroleum Limited",    "aliases": [],                         "industry": "Oil & Gas",        "keywords": ["oil", "gas", "petroleum", "exploration"]},
+    "LUCK":   {"name": "Lucky Cement",                  "aliases": [],                         "industry": "Cement",           "keywords": ["cement", "construction", "clinker"]},
+    "ENGRO":  {"name": "Engro Corporation",             "aliases": [],                         "industry": "Conglomerate",     "keywords": ["fertilizer", "urea", "petrochemical", "energy", "foods"]},
+    "HBL":    {"name": "Habib Bank Limited",            "aliases": [],                         "industry": "Banking",          "keywords": ["bank", "banking", "deposits", "loans"]},
+    "UBL":    {"name": "United Bank Limited",           "aliases": [],                         "industry": "Banking",          "keywords": ["bank", "banking"]},
+    "MCB":    {"name": "MCB Bank",                      "aliases": ["Muslim Commercial Bank"], "industry": "Banking",          "keywords": ["bank", "banking"]},
+    "NBP":    {"name": "National Bank of Pakistan",     "aliases": [],                         "industry": "Banking",          "keywords": ["bank", "banking"]},
+    "FFC":    {"name": "Fauji Fertilizer Company",      "aliases": [],                         "industry": "Fertilizer",       "keywords": ["fertilizer", "urea", "dap"]},
+    "HUBC":   {"name": "Hub Power Company",             "aliases": ["HUBCO"],                  "industry": "Power",            "keywords": ["power", "electricity", "ipp", "generation"]},
+    "PSO":    {"name": "Pakistan State Oil",            "aliases": [],                         "industry": "Oil Marketing",    "keywords": ["oil", "fuel", "petrol", "diesel", "omc"]},
+    "TRG":    {"name": "TRG Pakistan",                  "aliases": [],                         "industry": "Technology / BPO", "keywords": ["technology", "bpo", "ibex", "afiniti"]},
+    "SYS":    {"name": "Systems Limited",               "aliases": ["SYSLTD"],                 "industry": "Technology / IT",  "keywords": ["software", "technology", "it services"]},
+    "MEBL":   {"name": "Meezan Bank",                   "aliases": [],                         "industry": "Islamic Banking",  "keywords": ["bank", "islamic banking", "shariah"]},
+    "BAHL":   {"name": "Bank Al Habib",                 "aliases": [],                         "industry": "Banking",          "keywords": ["bank", "banking"]},
+    "POL":    {"name": "Pakistan Oilfields",            "aliases": [],                         "industry": "Oil & Gas",        "keywords": ["oil", "petroleum", "exploration"]},
+    "MARI":   {"name": "Mari Petroleum",                "aliases": [],                         "industry": "Oil & Gas",        "keywords": ["gas", "petroleum", "exploration"]},
+    "DGKC":   {"name": "D.G. Khan Cement",              "aliases": [],                         "industry": "Cement",           "keywords": ["cement", "construction"]},
+    "NESTLE": {"name": "Nestle Pakistan",               "aliases": [],                         "industry": "FMCG",             "keywords": ["fmcg", "food", "dairy", "consumer"]},
+}
+
+GLOBAL_KEYWORDS = [
+    "psx", "kse-100", "kse100", "karachi stock", "pakistan stock exchange",
+    "bourse", "dividend", "earnings", "profit", "loss", "revenue",
+    "rupee", "inflation", "interest rate", "policy rate", "sbp", "monetary policy",
+    "budget", "imf", "tax", "fiscal", "deficit", "current account",
+    "gdp", "exports", "imports", "fdi",
+]
+
+GENERAL_QUERIES = [
+    ("Pakistan stock exchange",  "Macro / PK Markets"),
+    ("PSX KSE-100",              "Macro / PK Markets"),
+    ("Pakistan economy",         "Macro / PK Economy"),
+    ("State Bank of Pakistan",   "Macro / PK Policy"),
+    ("IMF Pakistan",             "Macro / PK Policy"),
+    ("Pakistan budget",          "Macro / PK Fiscal"),
+    ("crude oil price",          "World / Commodities"),
+    ("Fed interest rate",        "World / Rates"),
+    ("global markets",           "World / Markets"),
+    ("emerging markets",         "World / Markets"),
+]
