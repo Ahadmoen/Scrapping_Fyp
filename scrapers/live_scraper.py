@@ -4,10 +4,11 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 import requests
 
-from symbols import SYMBOLS
+from .symbols import SYMBOLS
 
 TZ = ZoneInfo("Asia/Karachi")
 BASE_URL = "https://dps.psx.com.pk/timeseries/int"
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / "live"
 
 
 def fetch_today_ticks(symbol: str) -> pd.DataFrame:
@@ -62,7 +63,7 @@ def process(symbol: str, today_pkt) -> None:
     bars = to_hourly_bars(ticks).reset_index()
     bars.insert(0, "Symbol", symbol)
 
-    out = Path(f"{symbol.lower()}_live.json")
+    out = OUTPUT_DIR / f"{symbol.lower()}_live.json"
     merged = merge_with_existing(out, bars)
     merged.to_json(out, orient="records", date_format="iso", indent=2)
     print(f"{symbol}: saved {len(merged)} hourly bars → {out} (latest {merged['Date'].iloc[-1]})")

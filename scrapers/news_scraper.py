@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from urllib.parse import quote_plus
+import json
 import re
 import xml.etree.ElementTree as ET
 
@@ -9,11 +10,12 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
-from symbols import SYMBOLS, COMPANIES, GLOBAL_KEYWORDS, GENERAL_QUERIES
+from .symbols import SYMBOLS, COMPANIES, GLOBAL_KEYWORDS, GENERAL_QUERIES
 
 GOOGLE_NEWS_BASE = "https://news.google.com/rss/search"
 HL, GL, CEID = "en-PK", "PK", "PK:en"
 USER_AGENT = "Mozilla/5.0 (compatible; Scrapping_Fyp/1.0)"
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / "news"
 
 
 def build_symbol_query(symbol: str) -> str:
@@ -77,7 +79,7 @@ def parse_items(root: ET.Element) -> list:
 def merge_by_link(path: Path, new_rows: list) -> list:
     combined = new_rows[:]
     if path.exists():
-        prev = pd.read_json(path, orient="records").to_dict(orient="records")
+        prev = json.loads(path.read_text())
         combined = prev + combined
     seen = {}
     for row in combined:
@@ -123,14 +125,14 @@ def scrape_symbol(symbol: str) -> None:
         print(f"{symbol}: 0 items")
         return
 
-    out = Path(f"{symbol.lower()}_news.json")
+    out = OUTPUT_DIR / f"{symbol.lower()}_news.json"
     merged = merge_by_link(out, rows)
     write_json(out, merged)
     print(f"{symbol}: fetched {len(rows)}, total {len(merged)} -> {out}")
 
 
 def scrape_general() -> None:
-    out = Path("general_news.json")
+    out = OUTPUT_DIR / "general_news.json"
     rows = []
     for query, market in GENERAL_QUERIES:
         try:
